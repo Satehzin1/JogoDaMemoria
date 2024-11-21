@@ -1,1 +1,8 @@
-const timer = document.querySelector(".timer");
+const timer = setInterval(() => {
+
+    let sec = +1 
+
+}, 10)
+
+
+
