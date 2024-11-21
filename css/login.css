@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "Games";
+    src: url(../fonts/DIMIS___.TTF);
+}
+
+@import url(reset.css);
+
+body{
+    background: url(../images/fundo.gif) center no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    font-family: "Games";
+}
+
+.login__form{
+    text-align: center;
+}
+
+.login__input{
+   width: 85%;
+}
+
+.login__button{
+    padding: .5rem 1.75rem;
+    font-family: "Games";
+}
+
