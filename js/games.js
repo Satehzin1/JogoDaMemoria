@@ -10,6 +10,8 @@ window.onload = () => {
     
     spanPlayer.innerHTML = localStorage.getItem("player");
     startTimer();
+
+    loadGame();
 };
 
 // função para iniciar o tempo 
@@ -28,16 +30,16 @@ const startTimer = () => {
 
 // array dos personagens das cartas 
 const characters = [
-    "carta1.png",
-    "carta2.png",
-    "carta3.png",
-    "carta4.png",
-    "carta5.png",
-    "carta6.png",
-    "carta7.png",
-    "carta8.png",
-    "carta9.png",
-    "carta10.png"
+    "carta1",
+    "carta2",
+    "carta3",
+    "carta4",
+    "carta5",
+    "carta6",
+    "carta7",
+    "carta8",
+    "carta9",
+    "carta10"
 ];
 
 // função para criar um elemento
@@ -45,26 +47,37 @@ const createElement = (tag, className) => {
 
     const element = document.createElement(tag);
     element.className = className;
-    return element;    
+    return element; 
+
 };
 
 // criar as cartas 
-const createCard = () => {
+const createCard = (character) => {
 
     const card = document.createElement("div");
     const front = document.createElement("div");
     const back = document.createElement("div");
 
-    front.style.backgroundImage = `url(../images/carta4.png)`;
-
+    front.style.backgroundImage = `url(../images/${character}.png)`;
+    
     card.className = "card";
     front.className = "face front";
     back.className = "face back";
 
     card.appendChild(front);
     card.appendChild(back);
-    grid.appendChild(card);
+
+    return card;
 
 };
 
-createCard();
+// função para carregar o jogo 
+const loadGame = () => {
+    
+    characters.forEach((character) => {
+
+        const card = createCard(character);
+
+        grid.appendChild(card);
+    });
+};

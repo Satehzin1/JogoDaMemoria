@@ -32,9 +32,10 @@ header{
 }
 
 .card{
+    background-color: #fffc;
     width: 7rem;
     aspect-ratio: 3/4;
-    border-radius: 5px;
+    border-radius: 9px;
     position: relative;
     cursor:pointer;
     transform-style: preserve-3d;
@@ -59,6 +60,7 @@ header{
 .front{
     /* background: url(../images/carta2.png) center; */
     transform: rotateY(180deg);
+    background-position: center;
 }
 
 .back{
