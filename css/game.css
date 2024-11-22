@@ -57,7 +57,7 @@ header{
 }
 
 .front{
-    background: url(../images/carta2.png) center;
+    /* background: url(../images/carta2.png) center; */
     transform: rotateY(180deg);
 }
 

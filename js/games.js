@@ -27,7 +27,6 @@ const startTimer = () => {
 };
 
 // array dos personagens das cartas 
-
 const characters = [
     "carta1.png",
     "carta2.png",
@@ -41,15 +40,31 @@ const characters = [
     "carta10.png"
 ];
 
-// criar as cartas 
+// função para criar um elemento
+const createElement = (tag, className) => {
 
+    const element = document.createElement(tag);
+    element.className = className;
+    return element;    
+};
+
+// criar as cartas 
 const createCard = () => {
 
     const card = document.createElement("div");
     const front = document.createElement("div");
     const back = document.createElement("div");
-    
+
+    front.style.backgroundImage = `url(../images/carta4.png)`;
+
+    card.className = "card";
+    front.className = "face front";
+    back.className = "face back";
+
+    card.appendChild(front);
+    card.appendChild(back);
+    grid.appendChild(card);
+
 };
 
-
-
+createCard();
