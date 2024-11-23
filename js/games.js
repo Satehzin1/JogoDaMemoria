@@ -58,22 +58,18 @@ const createElement = (tag, className) => {
 // criar as cartas 
 const createCard = (character) => {
 
-    const card = document.createElement("div");
-    const front = document.createElement("div");
-    const back = document.createElement("div");
+    const card = document.createElement("div", "card");
+    const front = document.createElement("div", "face front");
+    const back = document.createElement("div", "face back");
 
     front.style.backgroundImage = `url(../images/${character}.png)`;
-    
-    card.className = "card";
-    front.className = "face front";
-    back.className = "face back";
 
     card.appendChild(front);
     card.appendChild(back);
 
     card.addEventListener('click', revealCard);
 
-    
+    card.setAttribute("data-character", character); 
 
     return card;
 
@@ -118,9 +114,30 @@ const revealCard = ( {target} ) => {
 // função para checar as cartas
 const checkCards = () => {
 
+    const firstCharacter = firstCard.getAttribute("data-character");
+    const secondCharacter = secondCard.getAttribute("data-character"); 
+    
+    if (firstCharacter === secondCharacter) {
 
+        // quando as acertar as cartas
+        firstCard.firstChild.classList.add("disabled-card");
+        secondCard.firstChild.classList.add("disabled-card");
+
+    }else {
+        // quando errar as cartas 
+        setTimeout(() => {
+
+            firstCard.classList.remove("reveal-card");
+            secondCard.classList.remove("reveal-card");
+
+            firstCard = "";
+            secondCard = "";
+
+        }, 500);
+    };
 };
 
 console.log("200");
+
 
 
