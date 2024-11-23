@@ -42,6 +42,10 @@ const characters = [
     "carta10"
 ];
 
+// dobrando e embaralhando as cartas 
+const duplicateCharacters = [...characters,...characters];
+const shuflledArray = duplicateCharacters.sort(() =>    Math.random() - 0.5);
+
 // função para criar um elemento
 const createElement = (tag, className) => {
 
@@ -67,6 +71,10 @@ const createCard = (character) => {
     card.appendChild(front);
     card.appendChild(back);
 
+    card.addEventListener('click', revealCard);
+
+    
+
     return card;
 
 };
@@ -74,10 +82,45 @@ const createCard = (character) => {
 // função para carregar o jogo 
 const loadGame = () => {
     
-    characters.forEach((character) => {
+    duplicateCharacters.forEach((character) => {
 
         const card = createCard(character);
 
         grid.appendChild(card);
     });
 };
+
+// criar variaveis para a primeira e segunda carta
+let firstCard = ""; 
+let secondCard = "";
+
+// função para revelar as cartas
+const revealCard = ( {target} ) => {
+
+    if (target.parentNode.className.includes("reveal-card")) {
+        return;
+    }
+    
+    if (firstCard === "") {
+        
+        target.parentNode.classList.add("reveal-card");
+        firstCard = target.parentNode;
+    } else if (secondCard === "") {
+
+        target.parentNode.classList.add("reveal-card");
+        secondCard = target.parentNode;
+
+        checkCards();
+    }
+
+};
+
+// função para checar as cartas
+const checkCards = () => {
+
+
+};
+
+console.log("200");
+
+

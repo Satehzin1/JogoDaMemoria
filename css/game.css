@@ -27,13 +27,13 @@ header{
 .grid{
     max-width: 700px;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: .5rem;
 }
 
 .card{
     background-color: #fffc;
-    width: 7rem;
+    width: 6rem;
     aspect-ratio: 3/4;
     border-radius: 9px;
     position: relative;
@@ -42,10 +42,9 @@ header{
     transition: all 0.5s ease;
 }
 
-.card:active{
+/* .card:active{
     transform: rotateY(180deg);
-    
-}
+} */
 
 .face{
     width: 100%;
@@ -91,9 +90,5 @@ header{
     .card{
         width: 4rem;
         aspect-ratio: 3/5;
-    }
-
-    
-
-    
+    }   
 }
