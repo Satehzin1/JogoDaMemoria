@@ -107,8 +107,7 @@ const revealCard = ( {target} ) => {
         secondCard = target.parentNode;
 
         checkCards();
-
-    }
+    };
 
 };
 
