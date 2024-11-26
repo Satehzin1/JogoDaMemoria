@@ -21,11 +21,9 @@ const startTimer = () => {
     this.loop = setInterval(() => {
         
         currentTime++;
-
         timer.innerHTML = currentTime;
 
     }, 1000);
-
 };
 
 // array dos personagens das cartas 
@@ -58,9 +56,9 @@ const createElement = (tag, className) => {
 // criar as cartas 
 const createCard = (character) => {
 
-    const card = document.createElement("div", "card");
-    const front = document.createElement("div", "face front");
-    const back = document.createElement("div", "face back");
+    const card = createElement("div", "card");
+    const front = createElement("div", "face front");
+    const back = createElement("div", "face back");
 
     front.style.backgroundImage = `url(../images/${character}.png)`;
 
@@ -78,11 +76,12 @@ const createCard = (character) => {
 // função para carregar o jogo 
 const loadGame = () => {
     
-    duplicateCharacters.forEach((character) => {
+    shuflledArray.forEach((character) => {
 
         const card = createCard(character);
 
         grid.appendChild(card);
+
     });
 };
 
@@ -98,15 +97,17 @@ const revealCard = ( {target} ) => {
     }
     
     if (firstCard === "") {
-        
+
         target.parentNode.classList.add("reveal-card");
         firstCard = target.parentNode;
+
     } else if (secondCard === "") {
 
         target.parentNode.classList.add("reveal-card");
         secondCard = target.parentNode;
 
         checkCards();
+
     }
 
 };
@@ -123,6 +124,9 @@ const checkCards = () => {
         firstCard.firstChild.classList.add("disabled-card");
         secondCard.firstChild.classList.add("disabled-card");
 
+        firstCard = "";
+        secondCard = "";
+
     }else {
         // quando errar as cartas 
         setTimeout(() => {
@@ -136,8 +140,3 @@ const checkCards = () => {
         }, 500);
     };
 };
-
-console.log("200");
-
-
-
