@@ -1,8 +1,10 @@
 const spanPlayer = document.querySelector(".player");
 const timer = document.querySelector(".timer");
 const grid = document.querySelector(".grid")
+const points = document.querySelector(".points");
 
 let currentTime = 0;
+let pontos = 0;
 
 // Quando a Janela carregar
 
@@ -20,6 +22,7 @@ const startTimer = () => {
 
     this.loop = setInterval(() => {
         
+        points.innerHTML = pontos;
         currentTime++;
         timer.innerHTML = currentTime;
 
@@ -120,14 +123,22 @@ const checkCards = () => {
     if (firstCharacter === secondCharacter) {
 
         // quando as acertar as cartas
+
+        
         firstCard.firstChild.classList.add("disabled-card");
         secondCard.firstChild.classList.add("disabled-card");
-
+        
         firstCard = "";
         secondCard = "";
+        
+        pontos += 10;
+        checkEndGame();
 
     }else {
         // quando errar as cartas 
+
+        pontos -= 2;
+
         setTimeout(() => {
 
             firstCard.classList.remove("reveal-card");
@@ -137,5 +148,42 @@ const checkCards = () => {
             secondCard = "";
 
         }, 500);
+
     };
+};
+
+// função para checar o fim do jogo 
+const checkEndGame = () => {
+
+    
+    const disabledCards = document.querySelectorAll(".disabled-card");
+    
+    if (disabledCards.length === 20) {
+
+        localStorage.setItem("score", pontos);
+        localStorage.setItem("recordTimer", currentTime);
+
+        clearInterval(this.loop);
+        
+        setTimeout(() => {
+            
+            alert(`
+                    Parabéns ${spanPlayer.innerHTML}.
+                    Tempo Total: ${currentTime} segundos.
+                    Pontos: ${pontos}.
+                `)
+
+                const dialog = confirm("Gostaria de jogar novamente?");
+                
+                if (dialog) {
+
+                    window.location.reload();
+    
+                } else{
+
+                    window.location.href = "../index.html" 
+                }
+        }, 1000);
+
+    }
 };
